@@ -28,7 +28,20 @@ export default {
       }
   },
   filters: {
+    toUppercase (value) {
+      return value.toUpperCase();
+    },
+    'snnippet': function(value) {
+      return value.slice(0, 100) + '...';
+    }
 
+  },
+  directives: {
+    'rainbow': {
+      bind(el, binding, vnode){
+          el.style.color = "#" + Math.random().toString(16).slice(2, 8);
+      }
+    }
   },
   methods: {
 

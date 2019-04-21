@@ -26,14 +26,6 @@ Vue.directive('theme', {
     }
 });
 
-//Filters
-Vue.filter('to-uppercase', function(value){
-  return value.toUpperCase();
-});
-
-Vue.filter('snnippet', function(value){
-  return value.slice(0, 100) + '...';
-});
 
 new Vue({
   render: h => h(App),
