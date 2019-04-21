@@ -3,7 +3,9 @@
       <h1>All Blogs Articles</h1>
       <input type="text" v-model="search" placeholder="search blogs"></input>
       <div v-theme="wide" v-for="(blog,i) in filteredBlogs" :key="i"  class="single-blog">
-        <h2 v-rainbow>{{ blog.title | to-uppercase }}</h2>
+        <router-link v-bind:to="'/blog/'+ blog.id">
+          <h2 v-rainbow>{{ blog.title | to-uppercase }}</h2>
+        </router-link>
         <article>{{ blog.body | snnippet }}</article>
       </div>
   </div>
