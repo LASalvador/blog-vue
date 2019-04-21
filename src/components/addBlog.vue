@@ -20,7 +20,11 @@
       <select v-model="blog.author">
         <option v-for="(author,i) in authors" :key="i">{{ author }}</option>
       </select>
+      <button @click.prevent="post">Add Blog</button>
     </form>
+    <div v-if="submitted">
+      Thanks to post your blog
+    </div>
       <div id="preview">
         <h3>Preview Blog</h3>
         <p>Blog title: {{ blog.title}} </p>
@@ -51,11 +55,21 @@ export default {
         categories: [],
         author: ''
       },
-      authors: ['Lucas', 'Porps','Sonne']
+      authors: ['Lucas', 'Porps','Sonne'],
+      submitted: false
     }
   },
   methods: {
-
+    post: function() {
+      this.$http.post('https://jsonplaceholder.typicode.com/posts', {
+        titile: this.blog.title,
+        body: this.blog.content,
+        userId: 1
+      }).then(function(data) {
+        console.log(data);
+        this.submitted = true;
+      });
+    }
   }
 }
 </script>
